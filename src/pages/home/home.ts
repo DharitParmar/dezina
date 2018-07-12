@@ -10,12 +10,16 @@ import {ProductProvider} from '../../providers/product/product';
 })
 export class HomePage {
 
+  public allProducts = [];
+
   constructor(private http: Http, public navCtrl: NavController, private productProvider: ProductProvider) {
 
   }
 
   ionViewDidLoad(){
     this.productProvider.getProduct()
-    .subscribe(response => console.log(response));
+    .subscribe(response => {
+      this.allProducts = response;
+    });
   }
 }
