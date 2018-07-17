@@ -7,5 +7,10 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let product of allBestSellerProducts">
+      <img [src]="product.image"/>
+    </ion-slide>
+  </ion-slides>
 
 </ion-content>
