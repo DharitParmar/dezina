@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ProductProvider} from '../../providers/product/product';
 import {ProductDetailPage} from '../product-detail/product-detail';
+import {FilterModalPage} from '../filter-modal/filter-modal';
 
 @Component({
   selector: 'page-home',
@@ -13,8 +14,13 @@ export class HomePage {
 
   public allProducts = [];
 
-  constructor(private http: Http, public navCtrl: NavController, private productProvider: ProductProvider) {
+  constructor(private modalController: ModalController,private http: Http, public navCtrl: NavController, private productProvider: ProductProvider) {
 
+  }
+
+  openFilterModal(){
+    let openFilterModal = this.modalController.create(FilterModalPage);
+    openFilterModal.present();
   }
 
   ionViewDidLoad(){
